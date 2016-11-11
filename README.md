@@ -67,6 +67,22 @@ defaults, and so on. Tweak this script, and occasionally run `dot` from
 time to time to keep your environment fresh and up-to-date. You can find
 this script in `bin/`.
 
+## Setting up Sublime
+Setting up a dotfiles git repository with Sublime Text 2 settings (OSX)
+First, a small aside. You need to install Sublime Package Control, a completely kick ass package manager for Sublime Text 2. Think of apt-get...er, Homebrew, for Sublime Text. You install it via the Sublime console.
+
+Hit ctrl+`to open the console   (That's a tilde)
+Run the following command:
+import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print('Please restart Sublime Text to finish installation')
+Restart Sublime Text
+Great. Now that you have that installed, all of the Sublime Text 2 user settings are stored in the Packages/User directory of the Sublime data folder. Make a new directory called .dotfiles, copy your existing User directory to .dotfiles, remove the Packages/User directory and replace it with a symlink to .dotfiles:
+
+mkdir -p ~/.dotfiles/sublime/
+cp -r ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User ~/.dotfiles/sublime
+rm -rf ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User
+ln -s ~/.dotfiles/sublime/User/ ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User
+You're done. Listing your file details in the Packages directory should yield something 
+
 ## bugs
 
 I want this to work for everyone; that means when you clone it down it should
