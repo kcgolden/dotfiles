@@ -1,0 +1,18 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Base Encoder",
+		"Git",
+		"Indent XML",
+		"Javascript Beautify",
+		"JSON Reindent",
+		"Package Control",
+		"SublimeLinter",
+		"SublimeLinter-jscs",
+		"SublimeLinter-jshint"
+	]
+}
