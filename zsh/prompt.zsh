@@ -16,9 +16,9 @@ git_state() {
   else
     if [[ $($git status --porcelain) == "" ]]
     then
-      echo "%{$fg_bold[green]%}•%{$reset_color%}"
+      echo "%{$fg[green]%}•%{$reset_color%}"
     else
-      echo "%{$fg_bold[red]%}✗%{$reset_color%}"
+      echo "%{$fg[red]%}✗%{$reset_color%}"
     fi
   fi
 }
@@ -45,6 +45,7 @@ git_branch() {
   echo $($git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
 }
 git_dir() {
+  if[[$]]
   echo $(basename `git rev-parse --show-toplevel`)
 }
 git_prefix() {
