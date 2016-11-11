@@ -1,6 +1,4 @@
 autoload colors && colors
-# cheers, @ehrenmurdick
-# http://github.com/ehrenmurdick/config/blob/master/zsh/prompt.zsh
 
 if (( $+commands[git] ))
 then
@@ -22,30 +20,10 @@ git_state() {
     fi
   fi
 }
-
-git_prompt_info () {
- ref=$($git symbolic-ref HEAD 2>/dev/null) || return
-# echo "(%{\e[0;33m%}${ref#refs/heads/}%{\e[0m%})"
- echo "${ref#refs/heads/}"
-}
-
-unpushed () {
-  $git cherry -v @{upstream} 2>/dev/null
-}
-
-need_push () {
-  if [[ $(unpushed) == "" ]]
-  then
-    echo ""
-  else
-    echo " with %{$fg_bold[magenta]%}unpushed%{$reset_color%} "
-  fi
-}
 git_branch() {
   echo $($git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
 }
 git_dir() {
-  if[[$]]
   echo $(basename `git rev-parse --show-toplevel`)
 }
 git_prefix() {
@@ -53,7 +31,7 @@ git_prefix() {
 }
 git_prompt() {
   ref=$($git symbolic-ref HEAD 2>/dev/null) || return
-  echo "%{$fg[yellow]%}[%{$fg[cyan]%}$(git_prefix)$(git_dir) ($(git_branch))$(git_state)%{$fg[yellow]%}]%{$reset_color%}"
+  echo "%{$fg[yellow]%}[%{$fg[cyan]%}$(git_dir) $(git_prefix)($(git_branch))$(git_state)%{$fg[yellow]%}]%{$reset_color%}"
 }
 directory_name() {
   echo "%{$fg[blue]%}%1/%{$reset_color%}"
