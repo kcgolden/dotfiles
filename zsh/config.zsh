@@ -1,6 +1,19 @@
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
+export SSL_CERT_FILE=/etc/ssl/keychain-certs.pem
+export REQUESTS_CA_BUNDLE=/etc/ssl/keychain-certs.pem
+export SQL_SERVER_HOST="AUSWDEVDB03"
+export SQL_SERVER_NAME="R441Bank"
+export SQL_SERVER_USER="dev_sa"
+exportSQL_SERVER_PWD="q2success"
+export HQ_URL="http://aus-app-dev-00/R441_Ardent_Hydra"
+export CSR_USER="q2"
+export CSR_PWD="2q"
+export ABA="022222222"
+export CACHE_HOST="10.115.4.230"
+export HQ_BOUNCE_URL="http://fabio-hq-lb.service.q2consul-corp:5000/sdk/44/api/v1/web/recycle/hq"
+
 fpath=($ZSH/functions $fpath)
 
 autoload -U $ZSH/functions/*(:t)
